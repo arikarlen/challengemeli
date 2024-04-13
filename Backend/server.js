@@ -11,8 +11,8 @@ app.get("/api/items", async (req, res) => {
 
         const formattedResponse = {
             author: {
-                name: "Nombre",
-                lastname: "Apellido",
+                name: "Ariel",
+                lastname: "Karlen",
             },
             categories: response.data.filters[0]?.values[0]?.path_from_root.map((category) => category.name) || [],
             items: response.data.results.slice(0, 4).map((item) => ({
@@ -32,6 +32,38 @@ app.get("/api/items", async (req, res) => {
         res.json(formattedResponse);
     } catch (error) {
         console.error("Error al obtener los datos de MercadoLibre:", error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+});
+
+app.get("/api/items/:id", async (req, res) => {
+    try {
+        const itemId = req.params.id;
+        const response = await axios.get(`https://api.mercadolibre.com/items/${itemId}`);
+        const descriptionResponse = await axios.get(`https://api.mercadolibre.com/items/${itemId}/description`);
+        const formattedResponse = {
+            author: {
+                name: "Ariel",
+                lastname: "Karlen",
+            },
+            item: {
+                id: response.data.id,
+                title: response.data.title,
+                price: {
+                    currency: response.data.currency_id,
+                    amount: response.data.price,
+                    decimals: 0,
+                },
+                picture: response.data.thumbnail,
+                condition: response.data.condition,
+                free_shipping: response.data.shipping.free_shipping,
+                sold_quantity: response.data.sold_quantity,
+                description: descriptionResponse.data.plain_text,
+            },
+        };
+        res.json(formattedResponse);
+    } catch (error) {
+        console.error("Error al obtener los detalles del artículo:", error);
         res.status(500).json({ error: "Error interno del servidor" });
     }
 });
