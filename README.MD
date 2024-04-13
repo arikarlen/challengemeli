@@ -45,3 +45,17 @@ La misma consta de un pequeño BFF que se conecta con las api´s de MeLi para ob
 
 
 
+
+## FRONT
+
+### Inicializar aplicacíon
+
+* Levatar primero el BFF siguiendo los pases anteriormente descriptos
+* Posicionarse en Challenge/Front
+* En una terminal, Ejecutar npm install para instalar las dependencias
+* Luego ejecutar npm run develop para levantar la aplicacion.
+
+
+**URL:** localhost:5173
+
+**Tecnologías:** React, Vite, Boostrap
