@@ -1,21 +1,14 @@
-// Importar las dependencias necesarias
 const axios = require("axios");
 const express = require("express");
 
-// Inicializar la aplicación express
 const app = express();
 const PORT = 5000;
 
-// Definir el endpoint de la API
 app.get("/api/items", async (req, res) => {
     try {
-        // Obtener el parámetro de búsqueda de la solicitud
         const query = req.query.q;
-
-        // Llamar al endpoint de MercadoLibre con el parámetro de búsqueda
         const response = await axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=${query}`);
 
-        // Formatear los datos de la respuesta
         const formattedResponse = {
             author: {
                 name: "Nombre",
@@ -28,7 +21,7 @@ app.get("/api/items", async (req, res) => {
                 price: {
                     currency: item.currency_id,
                     amount: item.price,
-                    decimals: 0, // No se proporciona la precisión en el precio
+                    decimals: 0,
                 },
                 picture: item.thumbnail,
                 condition: item.condition,
@@ -36,7 +29,6 @@ app.get("/api/items", async (req, res) => {
             })),
         };
 
-        // Devolver los datos formateados como respuesta
         res.json(formattedResponse);
     } catch (error) {
         console.error("Error al obtener los datos de MercadoLibre:", error);
@@ -44,7 +36,6 @@ app.get("/api/items", async (req, res) => {
     }
 });
 
-// Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Servidor express en ejecución en el puerto ${PORT}`);
 });
