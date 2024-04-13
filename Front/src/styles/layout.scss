@@ -2,11 +2,33 @@ $main-color: #ffe600;
 $dark-color: #333;
 $grey-color: #999;
 $ligth-color:#eee;
+$v-padding-header:8px;
+$v-padding-min: 16px;
+$v-padding-max:32px;
+$round-corners:4px;
+
+@mixin rounded-corners($radius) {
+    border-radius: $radius;
+  }
 
 body {
     background-color: $ligth-color;
 }
 
 
+.btn-secondary {
+    background-color: $grey-color;
+    border:none;
+    &:hover {
+        background-color: $dark-color;
+      }
+}
 
+/*Search box*/
+
+#searchBox {
+    background-color: $main-color;
+    padding: $v-padding-header 0;
+    font-size: 18px;
+}
 
