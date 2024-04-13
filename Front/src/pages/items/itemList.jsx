@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { fetchItems } from "../../services/getBySearch";
+import { SearchBox } from "../../components/commons/searchBox";
 
 export function ItemList() {
     const [items, setItems] = useState([]);
@@ -21,20 +23,27 @@ export function ItemList() {
     }, [searchValue]);
 
     return (
-        <div>
-            {loading && <p>Cargando...</p>}
+        <>
+            <SearchBox />
+            {loading && <div className="loading">Loading&#8230;</div>}
+            <Container id="breadcrumb">Breadcrumbs</Container>
 
-            <ul>
+            <Container id="listContent">
                 {items &&
                     items.map((item) => (
-                        <li key={item.id}>
-                            <img src={item.picture} alt={item.title} />
-                            <p>{item.title}</p>
-                            <p>{item.price.amount}</p>
-                            {item.free_shipping && <p>Envío gratis</p>}
-                        </li>
+                        <Row key={item.id}>
+                            <Col md={2}>
+                                <img src={item.picture} alt={item.title} />
+                            </Col>
+                            <Col md={8}>
+                                <p>{item.price.amount}</p>
+                                <h1>{item.title}</h1>
+                                {item.free_shipping && <p>Envío gratis</p>}
+                            </Col>
+                            <Col md={2}>Lugar</Col>
+                        </Row>
                     ))}
-            </ul>
-        </div>
+            </Container>
+        </>
     );
 }
