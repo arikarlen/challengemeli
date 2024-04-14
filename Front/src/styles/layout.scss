@@ -34,6 +34,11 @@ a {
       }
 }
 
+ol.breadcrumb {
+  padding: $padding-min 0;
+  margin: 0;
+}
+
 
 /*Search box*/
 
@@ -46,6 +51,7 @@ a {
 svg.bi.bi-search {
   margin: 10px 0 0 0;
 }
+
 
 /*List items*/
 
@@ -84,6 +90,13 @@ svg.freeShippingIcon {
   padding: 5px;
   border-radius: 50%;
 
+}
+
+/*item content*/
+
+#itemContent {
+  background-color: $white-color;
+  padding:  $padding-max $padding-min;
 }
 
 /*Loader*/
