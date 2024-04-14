@@ -1,20 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
 $main-color: #ffe600;
 $dark-color: #333;
+$dark-grey-color:#666;
 $grey-color: #999;
 $ligth-color:#eee;
 $white-color: #fff;
-$v-padding-header:8px;
-$v-padding-min: 16px;
-$v-padding-max:32px;
+$padding-header:8px;
+$padding-min: 16px;
+$padding-max:32px;
 $round-corners:4px;
+$image-size:180px;
 
-@mixin rounded-corners($radius) {
-    border-radius: $radius;
-  }
 
 body {
     background-color: $ligth-color;
+    font-family: "Figtree", sans-serif;
+    color: $dark-color
 }
+
+a {
+  text-decoration: none!important;
+  color: $dark-color
+}
+
 
 
 .btn-secondary {
@@ -30,17 +39,52 @@ body {
 
 #searchBox {
     background-color: $main-color;
-    padding: $v-padding-header 0;
+    padding: $padding-header 0;
     font-size: 18px;
 }
 
+svg.bi.bi-search {
+  margin: 10px 0 0 0;
+}
 
 /*List items*/
 
 #listContent {
     background-color: $white-color;
+    padding:  0 $padding-min;
 }
 
+#listContent a h1 {
+  font-size: 18px;
+ 
+}
+
+#listContent h3 {
+  font-size: 24px;
+  margin-bottom: $padding-max;
+}
+#listContent p {
+  font-size: 12px;
+  color: $dark-grey-color;
+}
+
+.listItem {
+  padding: $padding-min 0 ;
+  border-bottom: 1px solid $ligth-color;
+}
+
+.listItem img {
+  border-radius: 4px;
+  width: $image-size;
+  max-width: $image-size;
+}
+
+svg.freeShippingIcon {
+  background-color: #00ce22;
+  padding: 5px;
+  border-radius: 50%;
+
+}
 
 /*Loader*/
 
