@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Container, Row, Col, Image, Form, InputGroup, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logoMeli.png";
 import { Search } from "react-bootstrap-icons";
 
 export function SearchBox() {
+    const [inputError, setInputError] = useState(false);
     const handleKeyDown = (event) => {
         if (event.key === "Enter") {
             handleSearch(event);
@@ -13,6 +15,11 @@ export function SearchBox() {
     const handleSearch = (event) => {
         event.preventDefault();
         const inputValue = document.getElementById("searchInput").value;
+        if (inputValue.length < 3) {
+            setInputError(true);
+            return;
+        }
+
         window.location.href = `/items?search=${inputValue}`;
     };
 
@@ -31,6 +38,7 @@ export function SearchBox() {
                                     <Search />
                                 </Button>
                             </InputGroup>
+                            {inputError && <p>Por favor ingrese al menos 3 caracteres para buscar.</p>}
                         </Form>
                     </Col>
                 </Row>
