@@ -57,3 +57,5 @@ La misma consta de un pequeño BFF que se conecta con las api´s de MeLi para ob
 -   No se encontro en las api´s proporcionadas, un campo para obtener la localidad. Se resolvío desde el BFF, con un json de provincias argentinas. Al realizar el get, se consulta ese json, que se encuentra en /Backend/assets/provinces.json, y se agrega un campo con una provincia aleatoria.
 
 -   Todas las imágenes proporcionadas de la api, son chicas. Se adaptaron a las medidas pedidas, pero esto impacta en la calidad de las mismas.
+
+-   Traté de armar el front en Next.js, pero al instalar me pidio minimo Node vrs 18, y tengo instalado node 16. Hice el upgrade, pero intente levantar proyectos para los cuales estoy trabajando ahora y tuve varias incompatibilidades, asi que decidí dar marcha atras, para evitar atrasos en mi trabajo diario, y armar la app con Vite.
