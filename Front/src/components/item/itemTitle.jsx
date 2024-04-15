@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Button, InputGroup, Container, Row, Col } from "react-bootstrap";
+import { Form, Button, InputGroup, Container, Row, Col, Spinner } from "react-bootstrap";
 import { ToastMeli } from "../commons/toastMeli";
 export function ItemTitle({ title, price, condition }) {
     const [btnText, setBtntext] = useState("Comprar");
@@ -27,7 +27,7 @@ export function ItemTitle({ title, price, condition }) {
                         <Form>
                             <InputGroup className="mb-3">
                                 <Button variant="primary" onClick={HandleAddItem} disabled={addToCart}>
-                                    {btnText}
+                                    {addToCart && <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />} {btnText}
                                 </Button>
                             </InputGroup>
                         </Form>
