@@ -3,6 +3,7 @@ import { Container, Row, Col, Image, Form, InputGroup, Button } from "react-boot
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logoMeli.png";
 import { Search } from "react-bootstrap-icons";
+import { APP_URL } from "../../config/constants";
 
 export function SearchBox() {
     const [inputError, setInputError] = useState(false);
@@ -28,7 +29,9 @@ export function SearchBox() {
             <Container>
                 <Row>
                     <Col md={1}>
-                        <Image src={Logo} fluid />
+                        <a href={APP_URL}>
+                            <Image src={Logo} fluid />
+                        </a>
                     </Col>
                     <Col md={11}>
                         <Form>
@@ -38,7 +41,7 @@ export function SearchBox() {
                                     <Search />
                                 </Button>
                             </InputGroup>
-                            {inputError && <p>Por favor ingrese al menos 3 caracteres para buscar.</p>}
+                            {inputError && <p className="error">Por favor, ingrese al menos 3 caracteres para buscar.</p>}
                         </Form>
                     </Col>
                 </Row>
