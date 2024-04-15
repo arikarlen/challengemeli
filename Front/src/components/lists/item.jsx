@@ -18,7 +18,7 @@ export function Item({ data }) {
                     </Link>
                 </Col>
                 <Col md={{ span: 2, offset: 2 }}>
-                    <p>Buenos aires</p>
+                    <p>{item.province}</p>
                 </Col>
             </Row>
         ))

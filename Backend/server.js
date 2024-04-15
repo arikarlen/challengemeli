@@ -1,5 +1,6 @@
 const axios = require("axios");
 const express = require("express");
+const provinces = require("./assets/provinces.json");
 const cors = require("cors");
 
 const app = express();
@@ -10,6 +11,10 @@ app.get("/api/items", async (req, res) => {
     try {
         const query = req.query.q;
         const response = await axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=${query}`);
+        function getRandomProvince() {
+            const randomIndex = Math.floor(Math.random() * provinces.provincias.length);
+            return provinces.provincias[randomIndex].nombre;
+        }
 
         const formattedResponse = {
             author: {
@@ -28,6 +33,7 @@ app.get("/api/items", async (req, res) => {
                 picture: item.thumbnail,
                 condition: item.condition,
                 free_shipping: item.shipping.free_shipping,
+                province: getRandomProvince(),
             })),
         };
 
