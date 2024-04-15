@@ -9,7 +9,7 @@ export function Item({ data }) {
                 <Col md={2}>
                     <img src={item.picture} alt={item.title} />
                 </Col>
-                <Col md={6}>
+                <Col md={6} className="itemTitle">
                     <h3>
                         $ {item.price.amount.toLocaleString()} {item.free_shipping && <Truck color="black" size={24} className="freeShippingIcon" />}
                     </h3>
