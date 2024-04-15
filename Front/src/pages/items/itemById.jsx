@@ -4,6 +4,8 @@ import { SearchBox } from "../../components/commons/searchBox";
 import { fetchItem } from "../../services/getById";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { BreadcrumbMeli } from "../../components/commons/breadcrumb";
+import { ItemTitle } from "../../components/item/itemTitle";
+import { ItemDescription } from "../../components/item/itemDescription";
 export function ItemById() {
     const { id } = useParams();
     const [loading, setLoading] = useState(false);
@@ -31,10 +33,15 @@ export function ItemById() {
                     <Container id="itemContent">
                         <Row>
                             <Col md={8}>
-                                <Image src={item?.picture} clas />
+                                <Image src={item?.picture} />
                             </Col>
                             <Col md={4}>
-                                <h1>{item?.title}</h1>
+                                <ItemTitle title={item?.title} price={item?.price.amount} condition={item?.condition} />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={8} className="itemDescription">
+                                <ItemDescription description={item?.description} />
                             </Col>
                         </Row>
                     </Container>

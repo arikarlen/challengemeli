@@ -6,6 +6,7 @@ $dark-grey-color:#666;
 $grey-color: #999;
 $ligth-color:#eee;
 $white-color: #fff;
+$blue-color: #3483fa;
 $padding-header:8px;
 $padding-min: 16px;
 $padding-max:32px;
@@ -25,6 +26,14 @@ a {
 }
 
 
+.btn-primary {
+  background-color: $blue-color;
+  border:none;
+  width: 80%;
+  &:hover {
+      background-color: $dark-color;
+    }
+}
 
 .btn-secondary {
     background-color: $grey-color;
@@ -96,7 +105,43 @@ svg.freeShippingIcon {
 
 #itemContent {
   background-color: $white-color;
-  padding:  $padding-max $padding-min;
+  padding:  $padding-max ;
+}
+
+#itemContent h1 {
+  font-size: 24px;
+  margin-bottom: $padding-max;
+}
+
+#itemContent h2 {
+  font-size: 46px;
+  margin-bottom: $padding-max;
+}
+
+#itemContent h3 {
+  font-size: 14px;
+  margin-bottom: $padding-min;
+}
+
+#itemContent h4 {
+  font-size: 28px;
+  margin-bottom: $padding-max;
+}
+
+#itemContent img{
+  width: 680px;
+}
+.itemTitleContainer {
+  height: 100vh;
+}
+
+.itemTitle {
+  position: sticky;
+  top:20px
+}
+
+.itemDescription {
+  margin-top: 150px;
 }
 
 /*Loader*/
