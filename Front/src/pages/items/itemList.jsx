@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Breadcrumb } from "react-bootstrap";
-import { useLocation, Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import { fetchItems } from "../../services/getBySearch";
 import { SearchBox } from "../../components/commons/searchBox";
-import { Truck } from "react-bootstrap-icons";
 import { BreadcrumbMeli } from "../../components/commons/breadcrumb";
+import { Item } from "../../components/lists/item";
 
 export function ItemList() {
     const [items, setItems] = useState([]);
@@ -35,25 +35,7 @@ export function ItemList() {
                 <>
                     <BreadcrumbMeli categories={categories} />
                     <Container id="listContent">
-                        {items &&
-                            items.map((item) => (
-                                <Row key={item.id} className="listItem">
-                                    <Col md={2}>
-                                        <img src={item.picture} alt={item.title} />
-                                    </Col>
-                                    <Col md={6}>
-                                        <h3>
-                                            $ {item.price.amount.toLocaleString()} {item.free_shipping && <Truck color="black" size={24} className="freeShippingIcon" />}
-                                        </h3>
-                                        <Link to={`/items/${item.id}`}>
-                                            <h1>{item.title}</h1>
-                                        </Link>
-                                    </Col>
-                                    <Col md={{ span: 2, offset: 2 }}>
-                                        <p>Buenos aires</p>
-                                    </Col>
-                                </Row>
-                            ))}
+                        <Item data={items} />
                     </Container>
                 </>
             )}
